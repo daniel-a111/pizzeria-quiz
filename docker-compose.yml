@@ -1,0 +1,39 @@
+version: '3.7'
+
+services:
+  ts-node-docker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: base
+
+    container_name: ts-node-docker
+    expose:
+      - '3000'
+    ports:
+      - '3000:3000'
+    environment:
+      - REDIS_HOST=redis
+
+      - DOUGH_CHEFS=2
+      - TOPPING_CHEFS=3
+      - OVENS=1
+
+      - DOUGH_SEC_PER_WORK=7
+      - TOPPING_SEC_PER_WORK=4
+      - OVEN_SEC_PER_WORK=10
+
+      - DOUGH_CHEF_PARALLEL_RATE=1
+      - TOPPING_CHEF_PARALLEL_RATE=2
+      - OVEN_PARALLEL_RATE=1
+
+    command: node dist/cjs/index.js
+
+  redis:
+    image: redis:6.2-alpine
+    restart: always
+    ports:
+      - '6379:6379'
+    command: redis-server
+    # volumes: 
+    #   - cache:/data
