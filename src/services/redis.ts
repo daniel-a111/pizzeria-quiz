@@ -1,8 +1,9 @@
 import { Mutex } from "async-mutex";
 import { createClient } from "redis";
 import * as config from '../config';
-import { KEY_ITEM_STATE, KEY_NEXT_ORDER_ID, KEY_ORDER_TO_ITEMS_COUNT, NULL } from "../pizza/consts";
+// import { KEY_ITEM_STATE, KEY_NEXT_ORDER_ID, KEY_ORDER_TO_ITEMS_COUNT, NULL } from "../pizza/consts";
 import { OrderItem, OrderItemState } from "../pizza/types";
+import { KEY_ITEM_STATE, KEY_NEXT_ORDER_ID, KEY_ORDER_TO_ITEMS_COUNT, NULL } from "./consts";
 
 let client: any = null;
 

@@ -14,9 +14,6 @@ app.use(express.urlencoded({ limit: '25mb' }));
 app.use(bodyParser.json());
 app.use('/', routes);
 
-// (async () => {
-// })();
-
 app.listen(port, async () => {
     await redis.startClient();
     await startPipeline(config.WORKERS);

@@ -38,6 +38,7 @@ export class Queue {
         return (timeOut - timeIn) / 1000;
     }
 
+    // can be use later
     async flushCache(item: OrderItem) {
         await clearTimeIn(this.name, item);
     }
